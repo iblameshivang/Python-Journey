@@ -94,11 +94,40 @@ import pandas as pd
 #     index=["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
 #     name="Visits"
 # )
-
 # #find the days on which visits werre >100 & <250, return full row
 # visits[ (visits>100) & (visits<250) ]
 # #retrive the visits from wed to sat
 # visits["Wed":"Sat"]
+
+
+
+# You have a veriable `scores` with 1 column 'runs'.
+# Tasks:
+# 1. Squeeze it into a 1D Series.
+# 2. Replace all NaN values with the median of valid scores.
+# 3. Clip scores so no single innings exceeds x & y.
+# 4. Count how many innings were between 
+# 5. Filter all innings where the batsman scored exactly x,y.
+# 6. Categorize innings using `.apply()`:
+#    - "Century+" if >= 100
+#    - "Regular Score" otherwise
+
+import numpy as np
+import pandas as pd
+
+# #           **Answer**          #         
+# scores = [99, 49, 118, np.nan, 22, 11, np.nan, np.nan]
+# intoseries=pd.Series(scores,name='Runs')  #name will be shown down below, since sereis have only 1 column i.e 1D
+
+# scores = intoseries.fillna(intoseries.median())
+
+# scoreclipped=scores.clip(30,50) #every score before and after both p changes into those p
+
+# countinn=scores.between(20,30).sum()  #adds only true once as 1+1+..
+
+# filterspecific=scores.isin([22,11])
+
+# catogrize=scores.apply(lambda x: 'Century' if x>100 else 'regular shi')
 
 
 
